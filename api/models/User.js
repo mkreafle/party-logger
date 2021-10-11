@@ -56,6 +56,14 @@ email status until they click the link in the confirmation email.`
       example: 'Mary Sue van der McHenst'
     },
 
+    callSign: {
+      type: 'string',
+      required: true,
+      description: 'callSign for the user.',
+      maxLength: 120,
+      example: 'KC3MDK'
+    },
+
     isSuperAdmin: {
       type: 'boolean',
       description: 'Whether this user is a "super admin" with extra permissions, etc.',

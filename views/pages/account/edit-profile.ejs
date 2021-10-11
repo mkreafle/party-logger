@@ -19,6 +19,13 @@
             <div class="invalid-feedback" v-if="formErrors.emailAddress">Please enter a valid email address.</div>
           </div>
         </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="callSign">Callsign</label>
+            <input class="form-control" id="callSign" name="callSign" type="text"  :class="[formErrors.callSign ? 'is-invalid' : '']" v-model="formData.callSign" autocomplete="callSign">
+            <div class="invalid-feedback" v-if="formErrors.callSign">Please enter a valid callSign.</div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-sm-6">

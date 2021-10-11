@@ -40,6 +40,13 @@ the account verification message.)`,
       type: 'string',
       example: 'Frida Kahlo de Rivera',
       description: 'The user\'s full name.',
+    },
+
+    callSign:  {
+      required: true,
+      type: 'string',
+      example: 'KC3MDK',
+      description: 'The user\'s callSign.',
     }
 
   },
@@ -66,9 +73,10 @@ the account verification message.)`,
   },
 
 
-  fn: async function ({emailAddress, password, fullName}) {
+  fn: async function ({emailAddress, password, fullName, callSign}) {
 
     var newEmailAddress = emailAddress.toLowerCase();
+    var newcallSign = callSign.toUpperCase();
 
     // Build up data for the new user record and save it to the database.
     // (Also use `fetch` to retrieve the new ID so that we can use it below.)
@@ -76,6 +84,7 @@ the account verification message.)`,
       fullName,
       emailAddress: newEmailAddress,
       password: await sails.helpers.passwords.hashPassword(password),
+      callSign: newcallSign,
       tosAcceptedByIp: this.req.ip
     }, sails.config.custom.verifyEmailAddresses? {
       emailProofToken: await sails.helpers.strings.random('url-friendly'),
